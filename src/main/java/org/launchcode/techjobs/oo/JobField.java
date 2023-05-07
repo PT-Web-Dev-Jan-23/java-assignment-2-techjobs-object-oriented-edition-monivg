@@ -26,7 +26,6 @@ public abstract class JobField {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         JobField jobField = (JobField) o;
         return id == jobField.id && Objects.equals(value, jobField.value);
     }
@@ -35,7 +34,6 @@ public abstract class JobField {
     public int hashCode() {
         return Objects.hash(id, value);
     }
-
 
     // Getters and Setters:
 
