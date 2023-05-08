@@ -47,32 +47,31 @@ public class JobTest {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String stringJob1 = job1.toString();
         char firstCharacter = stringJob1.charAt(0);
-        char secondCharacter = stringJob1.charAt(stringJob1.length() - 1);
+        char lastCharacter = stringJob1.charAt(stringJob1.length() - 1);
         assertEquals('\n', firstCharacter);
-        assertEquals('\n', secondCharacter);
+        assertEquals('\n', lastCharacter);
     }
 
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String job1String = job1.toString();
-        assertTrue(job1String.contains("\nID: "+ job1.getId()));
-        assertTrue(job1String.contains("\nName: Product tester"));
-        assertTrue(job1String.contains("\nEmployer: ACME"));
-        assertTrue(job1String.contains("\nLocation: Desert"));
-        assertTrue(job1String.contains("\nPosition Type: Quality control"));
-        assertTrue(job1String.contains("\nCore Competency: Persistence"));
+        assertEquals("\nID: " + job1.getId() +
+                "\nName: Product tester" +
+                "\nEmployer: ACME" +
+                "\nLocation: Desert" +
+                "\nPosition Type: Quality control"+
+                "\nCore Competency: Persistence" +
+                "\n", job1.toString());
     }
     @Test
     public void testToStringHandlesEmptyField(){
         Job job = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-        String jobString = job.toString();
         assertEquals("\nID: " + job.getId() +
                 "\nName: Data not available" +
                 "\nEmployer: Data not available" +
                 "\nLocation: Data not available" +
                 "\nPosition Type: Data not available"+
                 "\nCore Competency: Data not available" +
-                "\n", jobString);
+                "\n", job.toString());
     }
 }
